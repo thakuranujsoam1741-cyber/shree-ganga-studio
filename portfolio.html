@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shree Ganga Studio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Space under navbar */
+    nav.navbar {
+      margin-bottom: 25px;
+    }
+
+    /* Navigation hover effect */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f8a500;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #f8a500;
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Hero animations (in case you use them on this page) */
+    .hero-text,
+    .hero-logo {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    .hero-logo {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Smooth scroll */
+    body {
+      scroll-behavior: smooth;
+      background-color: #f8f9fa;
+    }
+
+    /* Image hover and position adjustment */
+    img {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 15px; /* Adjust this value to shift the image lower */
+    }
+
+    img:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Captions */
+    .caption {
+      font-family: 'Cursive', sans-serif;
+      font-size: 24px;
+      color: #56391d;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: normal;
+    }
+
+    /* Modal size */
+    .modal-dialog {
+      max-width: 75%;
+      margin: 0 auto;
+    }
+
+    .modal-content {
+      width: 100%;
+      height: 75vh;
+    }
+
+    .modal-body {
+      padding: 0;
+    }
+
+    .modal-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Image load-in animation */
+    .image-container img {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .image-container img:nth-of-type(1) { animation-delay: 0.1s; }
+    .image-container img:nth-of-type(2) { animation-delay: 0.2s; }
+    .image-container img:nth-of-type(3) { animation-delay: 0.3s; }
+    .image-container img:nth-of-type(4) { animation-delay: 0.4s; }
+    .image-container img:nth-of-type(5) { animation-delay: 0.5s; }
+    .image-container img:nth-of-type(6) { animation-delay: 0.6s; }
+    .image-container img:nth-of-type(7) { animation-delay: 0.7s; }
+    .image-container img:nth-of-type(8) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer hover wiggle */
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: white;
+      transform-origin: center;
+      transition: 0.2s;
+    }
+
+    .hover-underline:hover::after {
+      animation: wiggle 0.35s ease;
+    }
+
+    @keyframes wiggle {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Move image gallery slightly down from navbar */
+    .image-container {
+      margin-top: 30px; /* Adjust this value to move images down */
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="shri-ganga-studio.html">
+        <img src="main-image/logo -2.png" width="55" class="me-2" alt="Logo">
+        <span class="fw-semibold text-dark">shreegangastudio</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="films.html">Films</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">About</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center ms-lg-3 gap-3">
+          <a href="#"><i class="fab fa-instagram fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-youtube fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-dark"></i></a>
+        </div>
+
+        <a href="b" class="btn btn-outline-dark ms-lg-4 mt-3 mt-lg-0">Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- IMAGE GALLERY -->
+  <div class="container image-container">
+    <div class="row">
+      <!-- Image 1 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/_SHA0226.webp" class="img-fluid rounded"
+             alt="Sourabh + Anu"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Sourabh + Anu</div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/SSP06328.webp" class="img-fluid rounded"
+             alt="Mansi + Hardik"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Mansi + Hardik</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Image 3 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/69.webp" class="img-fluid rounded"
+             alt="Vindhya + Pratyaksh"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Vindhya + Pratyaksh</div>
+      </div>
+
+      <!-- Image 4 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/131.webp" class="img-fluid rounded"
+             alt="Chetan + Priyal"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Chetan + Priyal</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Image 5 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/1+(48).webp" class="img-fluid rounded"
+             alt="Tarini + Uday"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Tarini + Uday</div>
+      </div>
+
+      <!-- Image 6 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/4+copy.webp" class="img-fluid rounded"
+             alt="Pre-wedding in Jaipur"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Pre-wedding in Jaipur</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Image 7 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/shashankimages_7796488.webp" class="img-fluid rounded"
+             alt="Pre-wedding in Delhi NCR"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Pre-wedding in Delhi NCR</div>
+      </div>
+
+      <!-- Image 8 -->
+      <div class="col-md-6 mb-4">
+        <img src="portfolio-image/9+copy.webp" class="img-fluid rounded"
+             alt="Pre-wedding at Paid Location"
+             data-bs-toggle="modal" data-bs-target="#imageModal"
+             onclick="openModal(this)">
+        <div class="caption">Pre-wedding at Paid Location</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE MODAL -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="modalImage" src="" class="img-fluid" alt="Large Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE TOP FOR FOOTER -->
+  <div style="overflow:hidden; margin-top:40px;">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 1440 200"
+         preserveAspectRatio="none"
+         style="width:100%; height:120px;">
+      <path fill="#56391d" d="
+        M0,0 
+        C300,0 700,200 1200,40 
+        C1350,10 1440,20 1440,20 
+        L1440,200 
+        L0,200 
+        Z"></path>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-white py-4" style="background:#56391d;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- LEFT -->
+        <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+          <p class="fw-semibold mb-1 hover-underline">info@shreegangastudio.com</p><br><br>
+          <p class="mb-3 hover-underline">(+91) 9368589755</p><br>
+          <p class="mb-3 hover-underline">(+91) 9068649916</p>
+        </div>
+
+        <!-- CENTER -->
+        <div class="col-lg-4 text-center mb-4 mb-lg-0">
+          <p class="fw-semibold mb-0">● Real people, Real stories, Real moments ●</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="col-lg-4 text-center text-lg-end">
+          <p class="fw-semibold mb-2">
+            <a href="#" class="text-white hover-underline">Facebook</a>
+          </p>
+          <p class="fw-semibold mb-0">
+            <a href="#" class="text-white hover-underline">Instagram</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- JS: Bootstrap + custom -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    // Set modal image to clicked image
+    function openModal(img) {
+      var modalImg = document.getElementById("modalImage");
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || "Large Image";
+    }
+  </script>
+
+</body>
+</html>

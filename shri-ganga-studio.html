@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shree Ganga Studio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Space under navbar */
+    nav.navbar {
+      margin-bottom: 25px;
+    }
+
+    /* Navigation hover effect */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f8a500;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #f8a500;
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Hero animations (in case you use them on this page) */
+    .hero-text,
+    .hero-logo {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    .hero-logo {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Smooth scroll */
+    body {
+      scroll-behavior: smooth;
+      background-color: #f8f9fa;
+    }
+
+    /* Image hover and position adjustment */
+    img {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 15px; /* Adjust this value to shift the image lower */
+    }
+
+    img:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Captions */
+    .caption {
+      font-family: 'Cursive', sans-serif;
+      font-size: 24px;
+      color: #56391d;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: normal;
+    }
+
+    /* Modal size */
+    .modal-dialog {
+      max-width: 75%;
+      margin: 0 auto;
+    }
+
+    .modal-content {
+      width: 100%;
+      height: 75vh;
+    }
+
+    .modal-body {
+      padding: 0;
+    }
+
+    .modal-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Image load-in animation */
+    .image-container img {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .image-container img:nth-of-type(1) { animation-delay: 0.1s; }
+    .image-container img:nth-of-type(2) { animation-delay: 0.2s; }
+    .image-container img:nth-of-type(3) { animation-delay: 0.3s; }
+    .image-container img:nth-of-type(4) { animation-delay: 0.4s; }
+    .image-container img:nth-of-type(5) { animation-delay: 0.5s; }
+    .image-container img:nth-of-type(6) { animation-delay: 0.6s; }
+    .image-container img:nth-of-type(7) { animation-delay: 0.7s; }
+    .image-container img:nth-of-type(8) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer hover wiggle */
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: white;
+      transform-origin: center;
+      transition: 0.2s;
+    }
+
+    .hover-underline:hover::after {
+      animation: wiggle 0.35s ease;
+    }
+
+    @keyframes wiggle {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Move image gallery slightly down from navbar */
+    .image-container {
+      margin-top: 30px; /* Adjust this value to move images down */
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="shri-ganga-studio.html">
+        <img src="main-image/logo -2.png" width="55" class="me-2" alt="Logo">
+        <span class="fw-semibold text-dark">SHREEGANGASTUDIO</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="films.html">Films</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">About</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center ms-lg-3 gap-3">
+          <a href="#"><i class="fab fa-instagram fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-youtube fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-dark"></i></a>
+        </div>
+
+        <a href="book-us.html" class="btn btn-outline-dark ms-lg-4 mt-3 mt-lg-0">Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+
+      <!-- TEXT LEFT -->
+      <div class="col-lg-6 mb-5 mb-lg-0 hero-text">
+        <h1 class="display-3 fw-bold text-dark">SHREE GANGA</h1>
+        <h1 class="display-3 fw-bold text-dark">STUDIO</h1>
+
+        <p class="fs-4 text-muted mt-3">
+          Wedding Photography & Film Making
+        </p>
+      </div>
+
+      <!-- LOGO RIGHT -->
+      <div class="col-lg-6 text-center hero-logo">
+        <div class="rounded-circle bg-white d-flex justify-content-center align-items-center mx-auto"
+             style="width: 300px; height: 300px;">
+          <img src="main-image/logo -2.png" class="img-fluid" style="max-width: 100%;">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<hr class=" border-2 h-2 w-75 mx-auto my-4">
+
+
+
+
+
+ 
+    <style>
+        /* Custom styles to match the exact design */
+        .text-brown {
+            color: #4e3b31; /* Dark brown color */
+        }
+        .bg-light-custom {
+            background-color: #f8f3e6; /* Light beige background */
+        }
+        .about-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4e3b31; /* Dark brown color */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .about-title:hover {
+            transform: scale(1.1); /* Slightly larger on hover */
+        }
+        .about-content {
+            background-color: #f8f3e6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .about-content:hover {
+            transform: scale(1.02); /* Slightly larger on hover */
+        }
+    </style>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Left Column for Title -->
+            <div class="col-md-4 d-flex align-items-center">
+                <h2 class="about-title">ABOUT <br> SHREEGANGASTUDIO</h2>
+            </div>
+
+            <!-- Right Column for Content -->
+            <div class="col-md-8">
+                <div class="about-content">
+                    <p class="text-brown">
+                        Shashankimages is run by a dynamic team of creative professionals with experience in wedding photography & cinematography based out of New Delhi, India.
+                    </p>
+                    <p class="text-brown">
+                        Each of our team members is a unique & amazing individual, absolutely beautiful in their own way. Over the years, we have built our team with a lot of love and care, and skill. This allows us to easily navigate between roles & adapt to a situation quickly, so we can capture what is authentic & real. We have a mix of full-time team members and long-term freelancers who we have carefully identified over years, so we are able to service intimate as well as large scale weddings with equal ease.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Hover effect for vertical movement */
+    .service-card:hover {
+      transform: translateY(-10px); /* Move up */
+      transition: transform 0.3s ease; /* Smooth transition */
+    }
+    .service-title:hover {
+      transform: translateY(-5px); /* Move up slightly */
+      transition: transform 0.3s ease; /* Smooth transition */
+    }
+    /* Ensures images fit the card and maintain aspect ratio */
+    .service-card img {
+      width: 100%;
+      height: auto;
+    }
+    /* Center the text inside the card */
+    .service-card-text {
+      text-align: center;
+      padding-top: 10px;
+    }
+  </style>
+
+<body>
+
+  <div class="container py-5">
+    <!-- Our Services title with hover effect -->
+    <h2 class="text-center mb-5 fw-bold service-title">Our Services</h2>
+    
+    <div class="row">
+      <!-- Pre-wedding Service Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card service-card border-0 shadow-sm rounded">
+          <img src="main-image/_DUR9288.webp" alt="Pre-wedding" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title text-center">Pre-wedding</h5>
+            <p class="card-text text-center">A pre-wedding shoot is a beautiful journey before the big day, where couples step into a world of their own, away from the hustle and bustle of wedding preparations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Service Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card service-card border-0 shadow-sm rounded">
+          <img src="main-image/_SHA0226.webp" alt="Wedding" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title text-center">Wedding</h5>
+            <p class="card-text text-center">It’s more than just photography—it’s a symphony of emotions, laughter, tears, and joy, all woven together through the lens. Imagine it as a timeless canvas where every glance, every smile, and every tender touch is immortalized.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portraits Service Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card service-card border-0 shadow-sm rounded">
+          <img src="main-image/_SON2211.webp" alt="Portraits" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title text-center">Portraits</h5>
+            <p class="card-text text-center">Each portrait tells a story—whether it’s the wisdom etched in the lines of an elder’s face, the innocence in a child’s eyes, or the confidence in the gaze of a professional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<hr class=" border-2 h-2 w-75 mx-auto my-4">
+
+
+
+  <style>
+    /* Custom styles for hover effects */
+    .philosophy-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #4e3b31; /* Dark brown color */
+      text-align: center;
+      transition: transform 0.3s ease; /* Smooth transition */
+    }
+
+    /* Hover effect for the title */
+    .philosophy-title:hover {
+      transform: scale(1.1); /* Slightly larger on hover */
+    }
+
+    .philosophy-content p {
+      position: relative;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 18px;
+      color: #4e3b31;
+      line-height: 1.8;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover effect for the paragraphs */
+    .philosophy-content p:hover {
+      color: #f8a500; /* Change color on hover */
+    }
+
+    /* Underline effect for paragraphs */
+    .philosophy-content p::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #f8a500; /* Line color */
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .philosophy-content p:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Body background */
+    body {
+      background-color: #f8f3e6; /* Light beige background */
+      padding: 40px 0;
+    }
+  </style>
+
+
+<body class="bg-light">
+
+  <!-- PHILOSOPHY SECTION -->
+  <section class="container">
+    <div class="row justify-content-center">
+
+      <!-- Title -->
+      <div class="col-lg-12">
+        <h2 class="philosophy-title">OUR PHILOSOPHY</h2>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-8 philosophy-content">
+        <p>Quality over quantity</p><br>
+        <p>Punctuality and clear communication</p><br>
+        <p>Do what is right, and feels right</p>
+        <p>Respect for Traditions and Cultures</p><br>
+        <p>Connect as human beings and everything else will follow</p><br>
+        <p>Love is all powerful</p><br>
+        <p>Everything happens for a reason</p>
+        <p>Always look out for, and trust serendipity.</p>
+      </div>
+
+    </div>
+  </section>
+
+<hr class=" border-2 h-2 w-75 mx-auto my-4">
+
+
+
+  <style>
+    /* Body and General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f1e1;
+      padding: 50px;
+      text-align: center;
+    }
+
+    /* Scrolling Text Section */
+    .scrolling-text-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #f0e6e6; /* Light background for contrast */
+      padding: 30px 0; /* Increased padding for height */
+      width: 100%; /* Full width to ensure the scrolling covers the entire container */
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      font-size: 60px; /* Increased font size */
+      font-weight: bold;
+      color: #4e3b31;
+      white-space: nowrap;
+      animation: scrolling 32s linear infinite; /* Slower speed */
+    }
+
+    /* Animation for scrolling text */
+    @keyframes scrolling {
+      0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+      }
+      50% {
+        transform: translateX(0); /* Midway, text is fully visible */
+      }
+      100% {
+        transform: translateX(-100%); /* Move off-screen to the left */
+      }
+    }
+
+    /* Book Us Button */
+    .btn-custom {
+      background-color: #4e3b31;
+      color: white;
+      padding: 15px 30px; /* Increased padding for larger button */
+      font-size: 20px; /* Larger font size */
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-custom:hover {
+      background-color: #f8a500; /* Change on hover */
+    }
+
+    /* Additional styling */
+    .btn-container {
+      margin-top: 50px; /* Added margin to separate button from text */
+    }
+  </style>
+<body>
+
+  <!-- Scrolling Text Section -->
+  <div class="scrolling-text-container">
+    <div class="scrolling-text">
+      We are ShreeGangaStudio, We are ShreeGangaStudio, We are ShreeGangaStudio
+    </div>
+  </div>
+
+  
+
+  <!-- Button Section with Gap -->
+  <div class="container btn-container">
+    <a href="book-us.html" class="btn-custom">Book Us</a>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- HOVER UNDERLINE + WIGGLE EFFECT -->
+<style>
+  .hover-underline {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    transition: 0.2s;
+  }
+
+  .hover-underline:hover::after {
+    animation: wiggle 0.35s ease;
+  }
+
+  @keyframes wiggle {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(-2px); }
+    50%  { transform: translateX(2px); }
+    75%  { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+  }
+</style>
+
+
+
+<!-- WAVE TOP -->
+<div style="overflow:hidden;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" style="width:100%; height:120px;">
+    <path fill="#56391d" d="
+      M0,0 
+      C300,0 700,200 1200,40 
+      C1350,10 1440,20 1440,20 
+      L1440,200 
+      L0,200 
+      Z"></path>
+  </svg>
+</div>
+
+
+
+<!-- FOOTER -->
+<footer class="text-white py-4" style="background:#56391d;">
+
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- LEFT -->
+      <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+        <p class="fw-semibold mb-1 hover-underline">info@shreegangastudio.com</p><br><br>
+        <p class="mb-3 hover-underline">(+91) 9368589755</p><br>
+        <p class="mb-3 hover-underline">(+91) 9068649916</p>
+      </div>
+
+      <!-- CENTER -->
+      <div class="col-lg-4 text-center mb-4 mb-lg-0">
+        <p class="fw-semibold mb-0">● Real people, Real stories, Real moments ●</p>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-lg-4 text-center text-lg-end">
+        <p class="fw-semibold mb-2">
+          <a href="#" class="text-white hover-underline">Facebook</a>
+        </p>
+        <p class="fw-semibold mb-0">
+          <a href="#" class="text-white hover-underline">Instagram</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+
+</body>
+</html>

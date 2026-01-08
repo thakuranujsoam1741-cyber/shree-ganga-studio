@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shree Ganga Studio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Space under navbar */
+    nav.navbar {
+      margin-bottom: 25px;
+    }
+
+    /* Custom Styling for Hover Effects on nav */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f8a500;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #f8a500;
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Slide Up Animation for hero (if used) */
+    .hero-text {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    .hero-logo {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease-out 0.5s forwards;
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Smooth scrolling */
+    body {
+      scroll-behavior: smooth;
+      background-color: #f8f9fa;
+    }
+
+    /* Hover effect for images */
+    img {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Modal image sizing */
+    .modal-dialog {
+      max-width: 75%;
+      margin: 0 auto;
+    }
+
+    .modal-content {
+      width: 100%;
+      height: 75vh;
+    }
+
+    .modal-body {
+      padding: 0;
+    }
+
+    .modal-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Image load-in animation (class added by JS) */
+    .fade-in-img {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FOOTER hover underline + wiggle */
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: white;
+      transform-origin: center;
+      transition: 0.2s;
+    }
+
+    .hover-underline:hover::after {
+      animation: wiggle 0.35s ease;
+    }
+
+    @keyframes wiggle {
+      0%   { transform: translateX(0); }
+      25%  { transform: translateX(-2px); }
+      50%  { transform: translateX(2px); }
+      75%  { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="shri-ganga-studio.html">
+        <img src="main-image/logo -2.png" width="55" class="me-2" alt="Logo">
+        <span class="fw-semibold text-dark">shreegangastudio</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="films.html">Films</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">About</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center ms-lg-3 gap-3">
+          <a href="#"><i class="fab fa-instagram fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-youtube fa-lg text-dark"></i></a>
+          <a href="#"><i class="fab fa-facebook fa-lg text-dark"></i></a>
+        </div>
+
+        <a href="book-us.html" class="btn btn-outline-dark ms-lg-4 mt-3 mt-lg-0">Book Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Image Gallery (Images 1-60) -->
+  <div class="container mt-5 image-container">
+    <div class="row">
+      <!-- Image 1-3 -->
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP8048.webp" class="img-fluid rounded" alt="Image 1"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON0524.webp" class="img-fluid rounded" alt="Image 2"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR8313-Edit.webp" class="img-fluid rounded" alt="Image 3"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 4-6 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR5419-Edit.webp" class="img-fluid rounded" alt="Image 4"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR8877.webp" class="img-fluid rounded" alt="Image 5"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON2511.webp" class="img-fluid rounded" alt="Image 6"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 7-9 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON2152.webp" class="img-fluid rounded" alt="Image 7"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP0401.webp" class="img-fluid rounded" alt="Image 8"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP0343.webp" class="img-fluid rounded" alt="Image 9"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 10-12 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON4837.webp" class="img-fluid rounded" alt="Image 10"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR7221.webp" class="img-fluid rounded" alt="Image 11"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR7582.webp" class="img-fluid rounded" alt="Image 12"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 13-15 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/3+copy.webp" class="img-fluid rounded" alt="Image 13"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/12+copy.webp" class="img-fluid rounded" alt="Image 14"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/9+copy.webp" class="img-fluid rounded" alt="Image 15"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 16-18 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/1.webp" class="img-fluid rounded" alt="Image 16"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP09254.webp" class="img-fluid rounded" alt="Image17"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP09038.webp" class="img-fluid rounded" alt="Image 18"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 19-21 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/14+copy.webp" class="img-fluid rounded" alt="Image 19"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/163.webp" class="img-fluid rounded" alt="Image 20"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/164.webp" class="img-fluid rounded" alt="Image 21"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 22-24 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/98.webp" class="img-fluid rounded" alt="Image 22"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/23+copy.webp" class="img-fluid rounded" alt="Image 23"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/165.webp" class="img-fluid rounded" alt="Image 24"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 25-27 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP05724-Edit.webp" class="img-fluid rounded" alt="Image 25"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP05538.webp" class="img-fluid rounded" alt="Image 26"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/My+New+Project_02.webp" class="img-fluid rounded" alt="Image 27"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 28-30 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR4405.webp" class="img-fluid rounded" alt="Image 28"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR4161-Edit.webp" class="img-fluid rounded" alt="Image 29"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR4077.webp" class="img-fluid rounded" alt="Image 30"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 31-33 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SHA0226.webp" class="img-fluid rounded" alt="Image 31"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON2020.webp" class="img-fluid rounded" alt="Image 32"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/21+copy.webp" class="img-fluid rounded" alt="Image 33"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 34-36 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP05260-Edit.webp" class="img-fluid rounded" alt="Image 34"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/139.webp" class="img-fluid rounded" alt="Image 35"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP8399.webp" class="img-fluid rounded" alt="Image 36"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 37-39 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON7828.webp" class="img-fluid rounded" alt="Image 37"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP0459.webp" class="img-fluid rounded" alt="Image 38"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP6759.webp" class="img-fluid rounded" alt="Image 39"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 40-42 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR9288.webp" class="img-fluid rounded" alt="Image 40"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP05713.webp" class="img-fluid rounded" alt="Image 41"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/unnamed.webp" class="img-fluid rounded" alt="Image 42"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 43-45 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP2942-Edit.webp" class="img-fluid rounded" alt="Image 43"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SHA8264-Edit.webp" class="img-fluid rounded" alt="Image 44"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/naina+post_5.webp" class="img-fluid rounded" alt="Image 45"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 46-48 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/30+copy.webp" class="img-fluid rounded" alt="Image 46"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/26+copy.webp" class="img-fluid rounded" alt="Image 47"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP8486-Edit.webp" class="img-fluid rounded" alt="Image 48"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 49-51 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/SSP05526.webp" class="img-fluid rounded" alt="Image 49"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON5381-Edit.webp" class="img-fluid rounded" alt="Image 50"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_DUR2806-Edit.webp" class="img-fluid rounded" alt="Image 51"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 52-54 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/22+copy.webp" class="img-fluid rounded" alt="Image 52"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/27+copy.webp" class="img-fluid rounded" alt="Image 53"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SSP8595.webp" class="img-fluid rounded" alt="Image 54"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 55-57 -->
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/_SON3077-Edit.webp" class="img-fluid rounded" alt="Image 55"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/2+copy.webp" class="img-fluid rounded" alt="Image 56"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/10copy.webp" class="img-fluid rounded" alt="Image 57"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Image 58-60 -->
+    <div class="row mb-5">
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/4+copy.webp" class="img-fluid rounded" alt="Image 58"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/15+copy.webp" class="img-fluid rounded" alt="Image 59"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="gallery-image/25+copy.webp" class="img-fluid rounded" alt="Image 60"
+             data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal(this)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Large Image View -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="modalImage" src="" class="img-fluid" alt="Large View">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE TOP -->
+  <div style="overflow:hidden;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" style="width:100%; height:120px;">
+      <path fill="#56391d" d="
+        M0,0 
+        C300,0 700,200 1200,40 
+        C1350,10 1440,20 1440,20 
+        L1440,200 
+        L0,200 
+        Z"></path>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-white py-4" style="background:#56391d;">
+
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- LEFT -->
+        <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+          <p class="fw-semibold mb-1 hover-underline">info@shreegangastudio.com</p><br><br>
+          <p class="mb-3 hover-underline">(+91) 9368589755</p><br>
+          <p class="mb-3 hover-underline">(+91) 9068649916</p>
+        </div>
+
+        <!-- CENTER -->
+        <div class="col-lg-4 text-center mb-4 mb-lg-0">
+          <p class="fw-semibold mb-0">● Real people, Real stories, Real moments ●</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="col-lg-4 text-center text-lg-end">
+          <p class="fw-semibold mb-2">
+            <a href="#" class="text-white hover-underline">Facebook</a>
+          </p>
+          <p class="fw-semibold mb-0">
+            <a href="#" class="text-white hover-underline">Instagram</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    // Modal image change
+    function openModal(img) {
+      var modalImg = document.getElementById("modalImage");
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || "Large View";
+    }
+
+    // Staggered fade-in on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      const imgs = document.querySelectorAll(".image-container img");
+      imgs.forEach((img, index) => {
+        const delay = 0.06 * (index + 1); // 0.06s gap between each image
+        img.style.setProperty("--delay", delay + "s");
+        img.classList.add("fade-in-img");
+      });
+    });
+  </script>
+
+</body>
+</html>
